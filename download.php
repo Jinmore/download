@@ -16,5 +16,6 @@ function downLoad($file)
      echo fgets($handler,1024);
    }
   fclose($handler);
+  
 }
 downLoad("../cfguanjia/api.php");
