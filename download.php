@@ -15,6 +15,7 @@ function downLoad($file)
    while(!feof($handler)){
      echo fgets($handler,1024);
    }
+   //关闭文件句柄
   fclose($handler);
   
 }
