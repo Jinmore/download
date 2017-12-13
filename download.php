@@ -17,6 +17,18 @@ function downLoad($file)
    }
    //关闭文件句柄
   fclose($handler);
-  
+
 }
-downLoad("../cfguanjia/api.php");
+
+$url =  "http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://www.baidu.com"; // 要下载的文件
+
+$curl = curl_init($url);
+$filename ="../abc.jpg";
+curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+$imageData = curl_exec($curl);
+curl_close($curl);
+//写入方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。
+$handler = @fopen($filename, 'a');
+fwrite($handler, $imageData);
+fclose($handler);
+?>
