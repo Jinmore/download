@@ -1,4 +1,5 @@
 <?php
+// 下载文件
 function downLoad($file)
 {
    //设置响应主体-处理方式：附件
@@ -19,16 +20,18 @@ function downLoad($file)
   fclose($handler);
 
 }
+// 下载二维码
+function get_qrcode($qrcode_url)
+{
+  $image_filename="./".date('Y-m-d').".jpg";
+  $curl=curl_init($qrcode_url);
+  curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+  $image_data=curl_exec($curl);
+  // 写入方式打开，将文件指针指向文件末尾，如果文件不存在则创建
+  $handler=fopen($image_filename,'a');
+  fwrite($handler,$image_data);
+  fclose($handler);
+}
+get_qrcode("http://qr.liantu.com/api.php?text=https://jinmore.com");
 
-$url =  "http://pan.baidu.com/share/qrcode?w=150&h=150&url=http://www.baidu.com"; // 要下载的文件
-
-$curl = curl_init($url);
-$filename ="../abc.jpg";
-curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-$imageData = curl_exec($curl);
-curl_close($curl);
-//写入方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。
-$handler = @fopen($filename, 'a');
-fwrite($handler, $imageData);
-fclose($handler);
 ?>
