@@ -1,4 +1,5 @@
 <?php
+namespace houger;
 // 下载文件
 function downLoad($file)
 {
