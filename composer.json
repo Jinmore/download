@@ -1,6 +1,6 @@
 {
-  "name": "houger/hello-composer",
-  "description": "Hello, Composer!",
+  "name": "houger/download",
+  "description": "Hello, world!",
   "type": "library",
   "require": {
     "php": ">=7.0"
